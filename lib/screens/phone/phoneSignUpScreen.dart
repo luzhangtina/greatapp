@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:greatapp/util/constPadding.dart';
-import 'package:greatapp/util/constSizedBoxes.dart';
 import 'package:greatapp/util/constStrings.dart';
 
 class PhoneSignUpScreen extends StatefulWidget {
@@ -66,7 +65,6 @@ class _PhoneSignUpScreenState extends State<PhoneSignUpScreen> {
                   textAlign: TextAlign.center,
                 ),
               ),
-              ConstSizedBoxes.kSizedBox30,
               RaisedButton(
                 onPressed: () {
                   // TODO: signUp

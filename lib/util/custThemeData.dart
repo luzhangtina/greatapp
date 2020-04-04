@@ -58,6 +58,18 @@ class CustThemeData {
           20.0,
         )),
       ),
+      errorBorder: OutlineInputBorder(
+        borderSide: BorderSide(
+          color: ConstColors.kErrorBorderColor,
+          width: 2.0,
+        ),
+        borderRadius: BorderRadius.all(Radius.circular(
+          20.0,
+        )),
+      ),
+      errorStyle: TextStyle(
+        color: ConstColors.kErrorTextColor,
+      ),
     ),
     buttonTheme: ButtonThemeData(
       buttonColor: ConstColors.kButtonColor,
@@ -171,5 +183,6 @@ class CustThemeData {
     iconTheme: IconThemeData(
       color: ConstColors.kIconColor,
     ),
+    errorColor: ConstColors.kErrorTextColor,
   );
 }

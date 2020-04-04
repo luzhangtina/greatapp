@@ -33,6 +33,8 @@ class ConstColors {
   static const Color kInputBorderColor = Color(0xFF8FCEB9);
   static const Color kIconColor = Color(0xFF8FCEB9);
   static const Color kDisabledColor = Color(0xFFBDBDBD);
+  static const Color kErrorBorderColor = kDarkGreen;
+  static const Color kErrorTextColor = kDarkGreen;
 
   static const Color kLandingPageBKColor = kDarkGreen;
   static const Color kLandingPageSignUpButtonColor = kMacaroonGreen;
