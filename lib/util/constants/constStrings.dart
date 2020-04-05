@@ -7,4 +7,6 @@ class ConstStrings {
   static const String kEnterEmail = 'Enter your email';
   static const String kEnterPassword = 'Enter your password';
   static const String kConfirmPassword = 'Confirm your password';
+  static const String kHaveAccountSignIn = 'Have account? Sign in';
+  static const String kDontHaveAccountSignUp = 'Don\'t have account? Sign up';
 }

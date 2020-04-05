@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:greatapp/screens/phone/phoneLogInPage.dart';
 import 'package:greatapp/screens/phone/phoneSignInScreen.dart';
 import 'package:greatapp/screens/phone/phoneSignUpScreen.dart';
 import 'package:greatapp/util/constants/custThemeData.dart';
@@ -18,6 +19,7 @@ class GreatApp extends StatelessWidget {
         LandingPage.pageId: (BuildContext context) => LandingPage(),
         PhoneSignInScreen.pageId: (BuildContext context) => PhoneSignInScreen(),
         PhoneSignUpScreen.pageId: (BuildContext context) => PhoneSignUpScreen(),
+        PhoneLogInPage.pageId: (BuildContext context) => PhoneLogInPage(),
       },
       debugShowCheckedModeBanner: false,
     );

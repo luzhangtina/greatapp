@@ -38,4 +38,5 @@ class ConstColors {
 
   static const Color kLandingPageBKColor = kDarkGreen;
   static const Color kLandingPageSignUpButtonColor = kMacaroonGreen;
+  static const Color kLoginPageBKColor = kDarkGreen;
 }
