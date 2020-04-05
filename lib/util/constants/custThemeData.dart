@@ -1,8 +1,8 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:greatapp/util/constColors.dart';
-import 'package:greatapp/util/constFonts.dart';
+import 'package:greatapp/util/constants/constColors.dart';
+import 'package:greatapp/util/constants/constFonts.dart';
 
 class CustThemeData {
   CustThemeData._();

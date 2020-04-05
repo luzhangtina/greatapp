@@ -1,8 +1,9 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:greatapp/util/constColors.dart';
-import 'package:greatapp/util/constPadding.dart';
-import 'package:greatapp/util/constStrings.dart';
+import 'package:greatapp/util/constants/constErrorMsgs.dart';
+import 'package:greatapp/util/constants/constPadding.dart';
+import 'package:greatapp/util/constants/constStrings.dart';
+import 'package:greatapp/util/validations/validations.dart';
 
 class PhoneSignInScreen extends StatefulWidget {
   static const String pageId = 'PhoneSignInScreen';
@@ -49,21 +50,19 @@ class _PhoneSignInScreenState extends State<PhoneSignInScreen> {
                     prefixIcon: Icon(
                       Icons.email,
                     ),
-                    errorStyle: TextStyle(color: ConstColors.kErrorTextColor),
-                    errorBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: ConstColors.kErrorBorderColor,
-                        width: 2.0,
-                      ),
-                      borderRadius: const BorderRadius.all(Radius.circular(
-                        20.0,
-                      )),
-                    ),
                   ),
                   textAlign: TextAlign.center,
                   keyboardType: TextInputType.emailAddress,
                   validator: (String value) {
-                    return value.isEmpty ? 'Email cannot be empty' : null;
+                    if (value.isEmpty) {
+                      return ConstErrorMsgs.kEmailIsEmpty;
+                    }
+
+                    if (!Validations.isValidEmailAddress(value)) {
+                      return ConstErrorMsgs.kEmailIsInvalid;
+                    }
+
+                    return null;
                   },
                   onSaved: (String value) => _email = value,
                 ),
@@ -76,22 +75,20 @@ class _PhoneSignInScreenState extends State<PhoneSignInScreen> {
                     prefixIcon: Icon(
                       Icons.enhanced_encryption,
                     ),
-                    errorStyle: TextStyle(color: ConstColors.kErrorTextColor),
-                    errorBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: ConstColors.kErrorBorderColor,
-                        width: 2.0,
-                      ),
-                      borderRadius: const BorderRadius.all(Radius.circular(
-                        20.0,
-                      )),
-                    ),
                   ),
                   obscureText: true,
                   textAlign: TextAlign.center,
                   keyboardType: TextInputType.visiblePassword,
                   validator: (String value) {
-                    return value.isEmpty ? 'Password cannot be empty' : null;
+                    if (value.isEmpty) {
+                      return ConstErrorMsgs.kPasswordIsEmpty;
+                    }
+
+                    if (!Validations.isValidPassword(value)) {
+                      return ConstErrorMsgs.kPasswordIsInvalid;
+                    }
+
+                    return null;
                   },
                   onSaved: (String value) => _password = value,
                 ),

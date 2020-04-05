@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:greatapp/screens/phone/phoneSignInScreen.dart';
 import 'package:greatapp/screens/phone/phoneSignUpScreen.dart';
-import 'package:greatapp/util/constColors.dart';
-import 'package:greatapp/util/constFonts.dart';
-import 'package:greatapp/util/constPadding.dart';
-import 'package:greatapp/util/constSizedBoxes.dart';
-import 'package:greatapp/util/constStrings.dart';
+import 'package:greatapp/util/constants/constColors.dart';
+import 'package:greatapp/util/constants/constFonts.dart';
+import 'package:greatapp/util/constants/constPadding.dart';
+import 'package:greatapp/util/constants/constSizedBoxes.dart';
+import 'package:greatapp/util/constants/constStrings.dart';
 
 class PhoneLandingPage extends StatefulWidget {
   static const String pageId = 'PhoneLandingPage';

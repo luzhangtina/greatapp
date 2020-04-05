@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:greatapp/util/constPadding.dart';
-import 'package:greatapp/util/constStrings.dart';
+import 'package:greatapp/util/constants/constErrorMsgs.dart';
+import 'package:greatapp/util/constants/constPadding.dart';
+import 'package:greatapp/util/constants/constStrings.dart';
+import 'package:greatapp/util/validations/validations.dart';
 
 class PhoneSignUpScreen extends StatefulWidget {
   static const String pageId = 'PhoneSignUpScreen';
@@ -10,6 +12,18 @@ class PhoneSignUpScreen extends StatefulWidget {
 
 class _PhoneSignUpScreenState extends State<PhoneSignUpScreen> {
   static final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  String _email;
+  String _password;
+  String _confirmPassword;
+
+  void validateAndSave() {
+    final FormState form = _formKey.currentState;
+    if (form.validate()) {
+      form.save();
+      print(_email + ' ' + _password + ' ' + _confirmPassword);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +40,7 @@ class _PhoneSignUpScreenState extends State<PhoneSignUpScreen> {
           child: ListView(
             children: <Widget>[
               SizedBox(
-                height: MediaQuery.of(context).size.height / 5,
+                height: MediaQuery.of(context).size.height / 6,
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height / 7,
@@ -39,6 +53,16 @@ class _PhoneSignUpScreenState extends State<PhoneSignUpScreen> {
                   ),
                   textAlign: TextAlign.center,
                   keyboardType: TextInputType.emailAddress,
+                  validator: (String value) {
+                    if (value.isEmpty) {
+                      return ConstErrorMsgs.kEmailIsEmpty;
+                    }
+
+                    if (!Validations.isValidEmailAddress(value)) {
+                      return ConstErrorMsgs.kEmailIsInvalid;
+                    }
+                  },
+                  onSaved: (String value) => _email = value,
                 ),
               ),
               SizedBox(
@@ -52,6 +76,19 @@ class _PhoneSignUpScreenState extends State<PhoneSignUpScreen> {
                   ),
                   obscureText: true,
                   textAlign: TextAlign.center,
+                  keyboardType: TextInputType.visiblePassword,
+                  validator: (String value) {
+                    if (value.isEmpty) {
+                      return ConstErrorMsgs.kPasswordIsEmpty;
+                    }
+
+                    if (!Validations.isValidPassword(value)) {
+                      return ConstErrorMsgs.kPasswordIsInvalid;
+                    }
+
+                    return null;
+                  },
+                  onSaved: (String value) => _password = value,
                 ),
               ),
               SizedBox(
@@ -63,11 +100,24 @@ class _PhoneSignUpScreenState extends State<PhoneSignUpScreen> {
                   ),
                   obscureText: true,
                   textAlign: TextAlign.center,
+                  keyboardType: TextInputType.visiblePassword,
+                  validator: (String value) {
+                    if (value.isEmpty) {
+                      return ConstErrorMsgs.kConfirmPasswordIsEmpty;
+                    }
+
+                    if (!Validations.isValidPassword(value)) {
+                      return ConstErrorMsgs.kConfirmPasswordIsInvalid;
+                    }
+
+                    return null;
+                  },
+                  onSaved: (String value) => _confirmPassword = value,
                 ),
               ),
               RaisedButton(
                 onPressed: () {
-                  // TODO: signUp
+                  validateAndSave();
                 },
                 child: Text(
                   ConstStrings.kSignUp,

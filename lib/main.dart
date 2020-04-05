@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:greatapp/screens/phone/phoneSignInScreen.dart';
 import 'package:greatapp/screens/phone/phoneSignUpScreen.dart';
-import 'package:greatapp/util/custThemeData.dart';
+import 'package:greatapp/util/constants/custThemeData.dart';
 import 'package:greatapp/screens/common/landingPage.dart';
 
 void main() => runApp(GreatApp());
