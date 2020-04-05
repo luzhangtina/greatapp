@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:greatapp/util/constants/constErrorMsgs.dart';
 import 'package:greatapp/util/constants/constPadding.dart';
@@ -17,11 +18,27 @@ class _PhoneSignInScreenState extends State<PhoneSignInScreen> {
   String _email;
   String _password;
 
-  void validateAndSave() {
+  bool _validateAndSave() {
     final FormState form = _formKey.currentState;
     if (form.validate()) {
       form.save();
-      print(_email + ' ' + _password);
+      return true;
+    }
+
+    return false;
+  }
+
+  void validateAndSubmit() async {
+    if (_validateAndSave()) {
+      try {
+        AuthResult authResult =
+            await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: _email,
+          password: _password,
+        );
+      } catch (e) {
+        print('Error: $e');
+      }
     }
   }
 
@@ -95,7 +112,7 @@ class _PhoneSignInScreenState extends State<PhoneSignInScreen> {
               ),
               RaisedButton(
                 onPressed: () {
-                  validateAndSave();
+                  validateAndSubmit();
                 },
                 child: Text(
                   ConstStrings.kSignIn,

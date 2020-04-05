@@ -2,7 +2,7 @@ class Validations {
   Validations._();
 
   static bool isValidPassword(String value) {
-    if (value.length < 8) {
+    if (value.length < 6) {
       return false;
     }
 
