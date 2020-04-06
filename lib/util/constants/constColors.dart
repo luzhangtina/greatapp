@@ -30,13 +30,13 @@ class ConstColors {
   static const Color kHighlightColor = Color(0xFF8FCEB9);
   static const Color kSelectedRowColor = Color(0xFF8FCEB9);
   static const Color kTextSelectionColor = Color(0xFF8FCEB9);
-  static const Color kInputBorderColor = Color(0xFF8FCEB9);
-  static const Color kIconColor = Color(0xFF8FCEB9);
+  static const Color kInputBorderColor = kDarkGreen;
+  static const Color kIconColor = kDarkGreen;
   static const Color kDisabledColor = Color(0xFFBDBDBD);
   static const Color kErrorBorderColor = kDarkGreen;
   static const Color kErrorTextColor = kDarkGreen;
 
-  static const Color kLandingPageBKColor = kDarkGreen;
-  static const Color kLandingPageSignUpButtonColor = kMacaroonGreen;
-  static const Color kLoginPageBKColor = kDarkGreen;
+  static const Color kLogInPageBKColor = kDarkGreen;
+  static const Color kLogInPageErrorTextColor = kWhite;
+  static const Color kLogInPageErrorBorderColor = kWhite;
 }

@@ -1,20 +1,20 @@
 class Validations {
   Validations._();
 
-  static bool isValidPassword(String value) {
-    if (value.length < 6) {
+  static bool isValidPassword({String password}) {
+    if (password.length < 6) {
       return false;
     }
 
     return true;
   }
 
-  static bool isValidEmailAddress(String value) {
-    if (value.isEmpty) {
+  static bool isValidEmailAddress({String email}) {
+    if (email.isEmpty) {
       return false;
     }
 
-    if (!value.contains('@')) {
+    if (!email.contains('@')) {
       return false;
     }
 

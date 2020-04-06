@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:greatapp/screens/phone/phoneSignInScreen.dart';
-import 'package:greatapp/screens/phone/phoneSignUpScreen.dart';
-import 'package:greatapp/util/constants/constColors.dart';
-import 'package:greatapp/util/constants/constFonts.dart';
-import 'package:greatapp/util/constants/constPadding.dart';
-import 'package:greatapp/util/constants/constSizedBoxes.dart';
-import 'package:greatapp/util/constants/constStrings.dart';
+import 'package:greatapp/api/auth.dart';
+import 'package:greatapp/screens/phone/phoneLogInPage.dart';
 
 class PhoneLandingPage extends StatefulWidget {
   static const String pageId = 'PhoneLandingPage';
+  final BaseAuth auth;
+
+  const PhoneLandingPage({@required this.auth});
 
   @override
   _PhoneLandingPageState createState() => _PhoneLandingPageState();
@@ -17,54 +15,8 @@ class PhoneLandingPage extends StatefulWidget {
 class _PhoneLandingPageState extends State<PhoneLandingPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: ConstColors.kLandingPageBKColor,
-      body: Padding(
-        padding: ConstPadding.kPaddingHorizontal24,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Text(
-              ConstStrings.kProductName,
-              style: TextStyle(
-                fontSize: 60.0,
-                fontWeight: FontWeight.w900,
-                color: ConstColors.kWhite,
-                fontFamily: ConstFonts.kBungee,
-              ),
-              textAlign: TextAlign.center,
-            ),
-            ConstSizedBoxes.kSizedBox48,
-            RaisedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, PhoneSignInScreen.pageId);
-              },
-              child: Text(
-                ConstStrings.kSignIn,
-                style: TextStyle(
-                  color: ConstColors.kWhite,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-            ),
-            ConstSizedBoxes.kSizedBox30,
-            RaisedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, PhoneSignUpScreen.pageId);
-              },
-              child: Text(
-                ConstStrings.kSignUp,
-                style: TextStyle(
-                  color: ConstColors.kWhite,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-              color: ConstColors.kLandingPageSignUpButtonColor,
-            ),
-          ],
-        ),
-      ),
+    return PhoneLogInPage(
+      auth: widget.auth,
     );
   }
 }

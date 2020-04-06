@@ -1,6 +1,6 @@
 import 'dart:ui';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:greatapp/api/auth.dart';
 import 'package:greatapp/util/constants/constColors.dart';
 import 'package:greatapp/util/constants/constErrorMsgs.dart';
 import 'package:greatapp/util/constants/constFonts.dart';
@@ -15,6 +15,9 @@ enum FormType {
 
 class PhoneLogInPage extends StatefulWidget {
   static const String pageId = 'PhoneLogInPage';
+  final BaseAuth auth;
+
+  const PhoneLogInPage({@required this.auth});
 
   @override
   _PhoneLogInPageState createState() => _PhoneLogInPageState();
@@ -30,7 +33,7 @@ class _PhoneLogInPageState extends State<PhoneLogInPage> {
     if (value.isEmpty) {
       return ConstErrorMsgs.kPasswordIsEmpty;
     }
-    if (!Validations.isValidPassword(value)) {
+    if (!Validations.isValidPassword(password: value)) {
       return ConstErrorMsgs.kPasswordIsInvalid;
     }
     return null;
@@ -40,7 +43,7 @@ class _PhoneLogInPageState extends State<PhoneLogInPage> {
     if (value.isEmpty) {
       return ConstErrorMsgs.kEmailIsEmpty;
     }
-    if (!Validations.isValidEmailAddress(value)) {
+    if (!Validations.isValidEmailAddress(email: value)) {
       return ConstErrorMsgs.kEmailIsInvalid;
     }
     return null;
@@ -60,14 +63,14 @@ class _PhoneLogInPageState extends State<PhoneLogInPage> {
     if (_validateAndSave()) {
       try {
         if (_formType == FormType.signIn) {
-          final AuthResult authResult =
-              await FirebaseAuth.instance.signInWithEmailAndPassword(
+          final String signedInUserId =
+              await widget.auth.signInWithEmailAndPassword(
             email: _email,
             password: _password,
           );
         } else {
-          final AuthResult authResult =
-              await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          final String signedInUserId =
+              await widget.auth.createUserWithEmailAndPassword(
             email: _email,
             password: _password,
           );
@@ -95,7 +98,7 @@ class _PhoneLogInPageState extends State<PhoneLogInPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ConstColors.kLoginPageBKColor,
+      backgroundColor: ConstColors.kLogInPageBKColor,
       body: Padding(
         padding: ConstPadding.kPaddingHorizontal24,
         child: Form(
@@ -110,6 +113,9 @@ class _PhoneLogInPageState extends State<PhoneLogInPage> {
 
   List<Widget> buildFormTextFields() {
     return <Widget>[
+      SizedBox(
+        height: MediaQuery.of(context).size.height / 4,
+      ),
       SizedBox(
         height: MediaQuery.of(context).size.height / 5,
         child: Text(
@@ -131,6 +137,18 @@ class _PhoneLogInPageState extends State<PhoneLogInPage> {
             prefixIcon: Icon(
               Icons.email,
             ),
+            errorBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                color: ConstColors.kLogInPageErrorTextColor,
+                width: 2.0,
+              ),
+              borderRadius: const BorderRadius.all(Radius.circular(
+                20.0,
+              )),
+            ),
+            errorStyle: TextStyle(
+              color: ConstColors.kLogInPageErrorTextColor,
+            ),
           ),
           textAlign: TextAlign.center,
           keyboardType: TextInputType.emailAddress,
@@ -146,6 +164,18 @@ class _PhoneLogInPageState extends State<PhoneLogInPage> {
             prefixIcon: Icon(
               Icons.enhanced_encryption,
             ),
+            errorBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                color: ConstColors.kLogInPageErrorTextColor,
+                width: 2.0,
+              ),
+              borderRadius: const BorderRadius.all(Radius.circular(
+                20.0,
+              )),
+            ),
+            errorStyle: TextStyle(
+              color: ConstColors.kLogInPageErrorTextColor,
+            ),
           ),
           obscureText: true,
           textAlign: TextAlign.center,
@@ -160,19 +190,17 @@ class _PhoneLogInPageState extends State<PhoneLogInPage> {
   List<Widget> buildButtons() {
     if (_formType == FormType.signIn) {
       return <Widget>[
-        SizedBox(
-          height: MediaQuery.of(context).size.height / 7,
-          child: RaisedButton(
-            onPressed: () => _validateAndSubmit(),
-            child: Text(
-              ConstStrings.kSignIn,
-            ),
+        RaisedButton(
+          onPressed: () => _validateAndSubmit(),
+          child: Text(
+            ConstStrings.kSignIn,
           ),
         ),
         FlatButton(
           onPressed: () => moveToSignUp(),
           child: Text(
             ConstStrings.kDontHaveAccountSignUp,
+            style: TextStyle(color: ConstColors.kWhite),
           ),
         ),
       ];
@@ -188,6 +216,7 @@ class _PhoneLogInPageState extends State<PhoneLogInPage> {
           onPressed: () => moveToSignIn(),
           child: Text(
             ConstStrings.kHaveAccountSignIn,
+            style: TextStyle(color: ConstColors.kWhite),
           ),
         ),
       ];

@@ -21,7 +21,7 @@ class CustThemeData {
     cursorColor: ConstColors.kCursorColor,
     appBarTheme: AppBarTheme(
       color: ConstColors.kPrimaryColor,
-      textTheme: TextTheme(
+      textTheme: const TextTheme(
         headline6: TextStyle(
           color: ConstColors.kWhite,
           fontSize: 20.0,
@@ -70,6 +70,8 @@ class CustThemeData {
       errorStyle: TextStyle(
         color: ConstColors.kErrorTextColor,
       ),
+      fillColor: ConstColors.kWhite,
+      filled: true,
     ),
     buttonTheme: ButtonThemeData(
       buttonColor: ConstColors.kButtonColor,
@@ -114,23 +116,23 @@ class CustThemeData {
         fontWeight: FontWeight.w700,
       ),
       subtitle1: TextStyle(
-        fontSize: 18.0,
+        fontSize: 20.0,
         fontWeight: FontWeight.w400,
       ),
       subtitle2: TextStyle(
-        fontSize: 18.0,
+        fontSize: 20.0,
         fontWeight: FontWeight.w100,
       ),
       bodyText1: TextStyle(
-        fontSize: 16.0,
+        fontSize: 18.0,
         fontWeight: FontWeight.w100,
       ),
       bodyText2: TextStyle(
-        fontSize: 14.0,
+        fontSize: 16.0,
         fontWeight: FontWeight.w100,
       ),
       button: TextStyle(
-        fontSize: 18.0,
+        fontSize: 20.0,
         fontWeight: FontWeight.w400,
       ),
     ),
@@ -160,23 +162,23 @@ class CustThemeData {
         fontWeight: FontWeight.w700,
       ),
       subtitle1: TextStyle(
-        fontSize: 18.0,
+        fontSize: 20.0,
         fontWeight: FontWeight.w400,
       ),
       subtitle2: TextStyle(
-        fontSize: 18.0,
+        fontSize: 20.0,
         fontWeight: FontWeight.w100,
       ),
       bodyText1: TextStyle(
-        fontSize: 16.0,
+        fontSize: 18.0,
         fontWeight: FontWeight.w100,
       ),
       bodyText2: TextStyle(
-        fontSize: 14.0,
+        fontSize: 16.0,
         fontWeight: FontWeight.w100,
       ),
       button: TextStyle(
-        fontSize: 18.0,
+        fontSize: 20.0,
         fontWeight: FontWeight.w400,
       ),
     ),
