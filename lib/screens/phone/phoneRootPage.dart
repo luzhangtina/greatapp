@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:greatapp/api/auth.dart';
 import 'package:greatapp/screens/phone/phoneLogInPage.dart';
 
-class PhoneLandingPage extends StatefulWidget {
-  static const String pageId = 'PhoneLandingPage';
+class PhoneRootPage extends StatefulWidget {
+  static const String pageId = 'PhoneRootPage';
   final BaseAuth auth;
 
-  const PhoneLandingPage({@required this.auth});
+  const PhoneRootPage({@required this.auth});
 
   @override
-  _PhoneLandingPageState createState() => _PhoneLandingPageState();
+  _PhoneRootPageState createState() => _PhoneRootPageState();
 }
 
-class _PhoneLandingPageState extends State<PhoneLandingPage> {
+class _PhoneRootPageState extends State<PhoneRootPage> {
   @override
   Widget build(BuildContext context) {
     return PhoneLogInPage(

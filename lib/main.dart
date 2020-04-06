@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:greatapp/api/auth.dart';
 import 'package:greatapp/screens/phone/phoneLogInPage.dart';
 import 'package:greatapp/util/constants/custThemeData.dart';
-import 'package:greatapp/screens/common/landingPage.dart';
+import 'package:greatapp/screens/common/RootPage.dart';
 
 void main() => runApp(GreatApp());
 
@@ -15,9 +15,9 @@ class GreatApp extends StatelessWidget {
 
     return MaterialApp(
       theme: CustThemeData.themeData,
-      initialRoute: LandingPage.pageId,
+      initialRoute: RootPage.pageId,
       routes: {
-        LandingPage.pageId: (BuildContext context) => LandingPage(auth: _auth),
+        RootPage.pageId: (BuildContext context) => RootPage(auth: _auth),
         PhoneLogInPage.pageId: (BuildContext context) =>
             PhoneLogInPage(auth: _auth),
       },
