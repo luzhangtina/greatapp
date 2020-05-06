@@ -36,6 +36,8 @@ class ConstColors {
   static const Color kErrorBorderColor = kDarkGreen;
   static const Color kErrorTextColor = kDarkGreen;
 
+  static const Color kLogoPageBKColor = kDarkGreen;
+
   static const Color kLogInPageBKColor = kDarkGreen;
   static const Color kLogInPageErrorTextColor = kWhite;
   static const Color kLogInPageErrorBorderColor = kWhite;

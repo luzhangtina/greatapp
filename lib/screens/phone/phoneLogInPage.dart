@@ -1,4 +1,3 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:greatapp/api/auth.dart';
 import 'package:greatapp/util/constants/constColors.dart';
@@ -16,8 +15,9 @@ enum FormType {
 class PhoneLogInPage extends StatefulWidget {
   static const String pageId = 'PhoneLogInPage';
   final BaseAuth auth;
+  final VoidCallback signedInProcess;
 
-  const PhoneLogInPage({@required this.auth});
+  const PhoneLogInPage({@required this.auth, @required this.signedInProcess});
 
   @override
   _PhoneLogInPageState createState() => _PhoneLogInPageState();
@@ -75,6 +75,8 @@ class _PhoneLogInPageState extends State<PhoneLogInPage> {
             password: _password,
           );
         }
+
+        widget.signedInProcess();
       } catch (e) {
         print('Error: $e');
       }

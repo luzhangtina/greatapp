@@ -8,4 +8,5 @@ class ConstStrings {
   static const String kEnterPassword = 'Enter your password';
   static const String kHaveAccountSignIn = 'Have account? Sign in';
   static const String kDontHaveAccountSignUp = 'Don\'t have account? Sign up';
+  static const String kLogOut = 'Log out';
 }
